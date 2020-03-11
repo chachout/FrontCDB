@@ -4,9 +4,9 @@
 
 .popup {
   margin: auto;
+  height:430px;
   padding: 0px;
   background: #fff;
-  border-radius: 5px;
   width: 30%;
   position: relative;
   //transition: all 5s ease-in-out;
@@ -16,7 +16,6 @@
 .popup  {
   position: absolute;
   top: 20px;
-  right: 30px;
   transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
@@ -27,7 +26,3 @@
   color: #06D85F;
 }
 
-
-@media screen and (max-width: 700px){
-
-}
