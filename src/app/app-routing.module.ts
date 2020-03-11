@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AccueilComponent} from './accueil/accueil.component';
 import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {FormulaireComponent} from './formulaire/formulaire.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'formulaire/add',
+    component: FormulaireComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'formulaire/edit',
+    component: FormulaireComponent,
     pathMatch: 'full'
   },
   {

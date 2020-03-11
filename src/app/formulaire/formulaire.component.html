@@ -19,12 +19,12 @@
        </div>
        <div class="row">
          <div class="input-field col s6">
-           <input  id="introduced" type="date" class="validate">
            <label for="introduced">Introduced</label>
+           <input  id="introduced" type="date" class="validate">
          </div>
          <div class="input-field col s6">
-           <input id="discontinued" type="date" class="validate">
            <label for="discontinued">Discontinued</label>
+           <input id="discontinued" type="date" class="validate">
          </div>
        </div>
        <div class="input-field col s12">
@@ -36,6 +36,10 @@
          </select>
        </div>
      </form>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+  <button class="btn waves-effect waves-light" type="submit" [routerLink]="['/dashboard']" name="action">Cancel</button>
 </div>
 
+
 </div>
+

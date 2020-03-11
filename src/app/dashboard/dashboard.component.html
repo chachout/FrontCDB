@@ -1,3 +1,27 @@
+<div class="row">
+  <div class="col s6">
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Filter</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Enter you research">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col s6">
+    <ul class="right hide-on-med-and-down">
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal" [routerLink]="['/formulaire/add']">
+        <i class="material-icons">add</i>
+      </a>
+    </ul>
+  </div>
+</div>
+
 <table class="striped">
   <thead>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,7 +47,7 @@
         </form>
       </td>
       <td>
-      <a href=#>
+      <a href=# [routerLink]="['/formulaire/edit']">
         <i class="tiny material-icons">edit</i>
       </a>
       Alvin
