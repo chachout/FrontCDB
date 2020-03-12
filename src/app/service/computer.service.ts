@@ -27,6 +27,6 @@ export class ComputerService {
     return this.http.patch<Computer>('http://10.0.1.154:8080/webModule/editComputer', computer);
   }
   getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>('http://10.0.1.154:8080/webModule/companies')
+    return this.http.get<Company[]>('http://10.0.1.154:8080/webModule/companies');
   }
 }
