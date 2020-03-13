@@ -18,12 +18,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'formulaire/add',
+    path: 'formulaire/add/:addMode',
     component: FormulaireComponent,
     pathMatch: 'full'
   },
   {
-    path: 'formulaire/edit',
+    path: 'formulaire/edit/:addMode/:id',
     component: FormulaireComponent,
     pathMatch: 'full'
   },

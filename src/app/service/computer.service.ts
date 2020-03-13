@@ -15,7 +15,7 @@ export class ComputerService {
     return this.http.get<Computer[]>('http://10.0.1.154:8080/webModule/computers');
   }
   getComputer(id: string): Observable<Computer> {
-    return this.http.get<Computer>('http://10.0.1.154:8080/webModule/computer/' + id);
+    return this.http.get<Computer>('http://10.0.1.154:8080/webModule/computer?id=' + id);
   }
   addComputer(computer: Computer): Observable<string>  {
     return this.http.post<string>('http://10.0.1.154:8080/webModule/addComputer', computer);

@@ -15,7 +15,7 @@
 
   <div class="col s6">
     <ul class="right hide-on-med-and-down">
-      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal" [routerLink]="['/formulaire/add']">
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal"  [routerLink]="['/formulaire/add',!addMode]">
         <i class="material-icons">add</i>
       </a>
     </ul>
@@ -24,7 +24,6 @@
 
 <table class="striped">
   <thead>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <tr>
       <th><a href=#><i class="small material-icons">delete</i></a></th>
       <th>Computer Name</th>
@@ -35,8 +34,7 @@
   </thead>
 
   <tbody>
-    <app-dashboard *ngFor="let computer of computerList">
-    <tr>
+    <tr *ngFor="let computer of computerList">
         <td>
           <form action="#">
             <p>
@@ -48,15 +46,14 @@
           </form>
         </td>
         <td>
-        <a href=# [routerLink]="['/formulaire/edit']">
+        <a href=# [routerLink]="['/formulaire/edit',addMode,computer.id]">
           <i class="tiny material-icons">edit</i>
         </a>
         {{computer.name}}
         </td>
         <td>{{computer.introduced}}</td>
         <td>{{computer.discontinued}}</td>
-        <td>{{computer.company.name}}</td>
+        <td *ngIf="computer.company!=null">{{computer.company.name}}</td>
       </tr>
-    </app-dashboard>
   </tbody>
 </table>
