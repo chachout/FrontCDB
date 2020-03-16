@@ -25,7 +25,6 @@
 <table class="striped">
   <thead>
   <tr>
-      <th><a href=#><i class="small material-icons">delete</i></a></th>
       <th>Computer Name</th>
       <th>Introduced Date</th>
       <th>Discontinued Date</th>
@@ -35,15 +34,10 @@
 
   <tbody>
     <tr *ngFor="let computer of computerList">
-        <td>
-          <form action="#">
-            <p>
-              <label>
-                <input type="checkbox" class="filled-in" />
-                <span></span>
-              </label>
-            </p>
-          </form>
+        <td class="deleteMode">
+            <a href=#>
+              <i class="small material-icons" (click)="supprimer(computer.id.toString())">delete</i>
+            </a>
         </td>
         <td>
         <a href=# [routerLink]="['/formulaire/edit',addMode,computer.id]">

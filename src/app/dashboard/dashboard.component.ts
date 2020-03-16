@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.computerService.getComputers().subscribe(computerList => this.computerList = computerList, error => console.log(error));
   }
-  switchMode() {
-    this.addMode = !this.addMode;
+  supprimer(idList: string) {
+    this.computerService.deleteComputer(idList).subscribe();
   }
 }
