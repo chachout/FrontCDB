@@ -25,7 +25,7 @@
 <table class="striped">
   <thead>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <tr>
+  <tr>
       <th><a href=#><i class="small material-icons">delete</i></a></th>
       <th>Computer Name</th>
       <th>Introduced Date</th>
@@ -35,26 +35,28 @@
   </thead>
 
   <tbody>
+    <app-dashboard *ngFor="let computer of computerList">
     <tr>
-      <td>
-        <form action="#">
-          <p>
-            <label>
-              <input type="checkbox" class="filled-in" />
-              <span></span>
-            </label>
-          </p>
-        </form>
-      </td>
-      <td>
-      <a href=# [routerLink]="['/formulaire/edit']">
-        <i class="tiny material-icons">edit</i>
-      </a>
-      Alvin
-      </td>
-      <td>Eclair</td>
-      <td>$0.87</td>
-      <td>Unicorn</td>
-    </tr>
+        <td>
+          <form action="#">
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" />
+                <span></span>
+              </label>
+            </p>
+          </form>
+        </td>
+        <td>
+        <a href=# [routerLink]="['/formulaire/edit']">
+          <i class="tiny material-icons">edit</i>
+        </a>
+        {{computer.name}}
+        </td>
+        <td>{{computer.introduced}}</td>
+        <td>{{computer.discontinued}}</td>
+        <td>{{computer.company.name}}</td>
+      </tr>
+    </app-dashboard>
   </tbody>
 </table>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ComputerService} from '../service/computer.service';
+import {Computer} from '../model/computer.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+computerList: Computer[];
 
-  constructor() { }
+  constructor(private computerService: ComputerService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.computerService.getComputers().subscribe(computerList => this.computerList = computerList, error => console.log(error));
   }
 
 }
