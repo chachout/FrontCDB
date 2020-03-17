@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<nav class="corps">
-  <div class="nav-wrapper">
+<nav class="corps monTheme">
+  <div class="nav-wrapper ">
     <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Application - Computer Database</a>
     <ul class="right hide-on-med-and-down">
       <li *ngIf="loginService.estUser()">
@@ -8,12 +8,12 @@
       </li>
       <li>
         <div class="text-center" *ngIf="!loginService.estConnecte()">
-          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Se connecter</a>
+          <a href="" class="btn btn-success  mb-4" data-toggle="modal" data-target="#modalLoginForm">Se connecter</a>
         </div>
       </li>
       <li>
         <div class="text-center" *ngIf="loginService.estConnecte()">
-          <button  class="btn btn-default btn-rounded mb-4" (click)="loginService.seDeconnecter()">Se deconnecter</button>
+          <button  class="btn btn-success  mb-4" (click)="loginService.seDeconnecter()">Se deconnecter</button>
         </div>
       </li>
     </ul>
@@ -30,7 +30,7 @@
       <div class="modal-content">
         <div class="modal-header text-center">
           <h4 class="modal-title w-100 font-weight-bold">Se connecter</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close btn-success" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -52,17 +52,12 @@
           </div>
 
           <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-default" type="submit">Login</button>
+            <button class="btn btn-success" type="submit">Login</button>
           </div>
 
       </div>
     </div>
     </form>
   </div>
-
-
-
-
-
 
 </nav>

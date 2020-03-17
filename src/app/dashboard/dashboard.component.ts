@@ -32,7 +32,13 @@ export class DashboardComponent implements OnInit {
   }
 
   supprimer(idList: string) {
-    this.computerService.deleteComputer(idList).subscribe();
+    if(confirm("voulez-vous vraiment supprimer cet ordinateur?")) {
+      this.computerService.deleteComputer(idList).subscribe(()=>
+      {
+        this.getComputerLIst(this.taillePage,this.pageIterator);
+      }
+      );
+    }
   }
 
   sort(field:string,taillePage:any){

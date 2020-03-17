@@ -24,7 +24,8 @@ export class ComputerService {
     return this.http.post<string>(this.baseURL+'/addComputer', computer);
   }
   deleteComputer(idlist: string): Observable<void> {
-    return this.http.delete<void>(this.baseURL+'/computers/' + idlist);
+    console.log(idlist);
+    return this.http.post<void>(this.baseURL+'/computers/',{'selection':idlist} );
   }
   updateComputer(computer: Computer): Observable<Computer> {
     return this.http.patch<Computer>(this.baseURL+'/editComputer', computer);

@@ -10,6 +10,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
+import { FooterComponent } from './footer/footer.component';
+import { BannerComponent } from './banner/banner.component';
 
 
 
@@ -19,7 +21,9 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
     AccueilComponent,
     HeaderComponent,
     DashboardComponent,
-    FormulaireComponent
+    FormulaireComponent,
+    FooterComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
