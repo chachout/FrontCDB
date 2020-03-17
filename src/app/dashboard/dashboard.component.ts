@@ -12,27 +12,74 @@ export class DashboardComponent implements OnInit {
   computerList: Computer[];
   addMode = false;
   searchBox: any ;
+  pageIterator:any;
+  size:any;
+  taillePage:any;
   constructor(private computerService: ComputerService) { }
 
   ngOnInit() {
+    this.taillePage = 20;
+    this.pageIterator = 0;
+    this.getComputerLIst(this.taillePage,this.pageIterator);
     this.searchBox = '';
-    this.getComputerLIst();
+    this.size=0;
+    this.taillePage = 20;
   }
 
-  getComputerLIst(){
-    this.computerService.getComputers().subscribe(computerList => this.computerList = computerList, error => console.log(error));
+  getComputerLIst(taillePage:any,pageIterator:any){
+    this.computerService.getComputers(taillePage,pageIterator).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+    this.numberOfComputers();
   }
 
   supprimer(idList: string) {
     this.computerService.deleteComputer(idList).subscribe();
   }
 
-  sort(field:string){
-    console.log(field);
-    this.computerService.sortBy(field).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+  sort(field:string,taillePage:any){
+    this.computerService.sortBy(field,taillePage).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+    this.numberOfComputers();
   }
 
   search(){
+    this.pageIterator=0;
     this.computerService.search(this.searchBox).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+    this.size=this.computerList .length;
+  }
+
+  estDernierePage():boolean{
+    if((this.pageIterator == this.size/this.taillePage) || (this.pageIterator+1 > this.size/this.taillePage) ){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  estPremierePage():boolean{
+    if(this.pageIterator==0){
+      return true;
+    }
+    return false;
+  }
+
+  cinqsElements():Number[]{
+    const list = new Array(1,2,3,4);
+    return list;
+  }
+  numberOfComputers(){
+    this.computerService.getNumberOfComputers().subscribe(size => this.size = size, error => console.log() ) 
+  }
+
+  avancerPage(){
+    this.pageIterator++;
+    this.getComputerLIst(this.taillePage,this.pageIterator);
+    
+  }
+  allerALaPage(i:any){
+    this.pageIterator=i;
+    this.getComputerLIst(this.taillePage,this.pageIterator);
+
+  }
+  retournerPage(){
+    this.pageIterator--;
+    this.getComputerLIst(this.taillePage,this.pageIterator);
   }
 }
