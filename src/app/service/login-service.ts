@@ -8,7 +8,7 @@ import {Observable, of} from 'rxjs';
 })
 export class ServiceLogin {
 
-  baseUrl = 'http://10.0.1.154:8080/webModule/';
+  baseUrl = 'localhost:8080/webModule/';
   UserConnected: User ;
   constructor(private http: HttpClient) { }
 

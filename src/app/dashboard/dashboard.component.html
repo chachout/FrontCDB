@@ -2,13 +2,15 @@
   <div class="col s6">
     <form action="#">
       <div class="file-field input-field">
-        <div class="btn">
-          <span>Filter</span>
-          <input type="file">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Enter you research">
-        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="search" id="search" type="text" class="validate" [(ngModel)]="searchBox">
+          </div>
+          <div class="input-field col s6">
+            <button class="btn-floating btn-large waves-effect waves-light red" (click)="search()"><i class="material-icons">search</i></button>      
+          </div>
+          {{searchBox}}
+       </div>
       </div>
     </form>
   </div>
@@ -25,21 +27,38 @@
 <table class="striped">
   <thead>
   <tr>
-      <th>Computer Name</th>
-      <th>Introduced Date</th>
-      <th>Discontinued Date</th>
-      <th>Company Name</th>
+      <th>  
+        <a (click)="sort('name ASC')" ><i class="small material-icons" >expand_less</i></a>
+        <a (click)="getComputerLIst()" >Computer Name</a>
+        <a  (click)="sort('name DESC')"><i class="small material-icons">expand_more</i></a>
+      </th>
+      <th>
+        <a (click)="sort('introduced ASC')" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst()" >Introduced Date</a>
+        <a (click)="sort('introduced DESC')" ><i class="small material-icons">expand_more</i></a>
+      </th>
+      <th>
+        <a (click)="sort('discontinued ASC')" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst()" >Discontinued Date</a>
+        <a (click)="sort('discontinued ASC')" ><i class="small material-icons">expand_more</i></a>
+      </th>
+      <th>
+        <a (click)="sort('company.name ASC')" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst()" >Company Name</a>
+        <a (click)="sort('company.name DESC')" ><i class="small material-icons">expand_more</i></a>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let computer of computerList">
-        <td class="deleteMode">
-            <a href=#>
-              <i class="small material-icons" (click)="supprimer(computer.id.toString())">delete</i>
-            </a>
-        </td>
+        
         <td>
+          <span class="deleteMode">
+            <a href=#>
+              <i class="small material-icons" style="font-size: 15px;" (click)="supprimer(computer.id.toString())">delete</i>
+            </a>
+          </span>
         <a href=# [routerLink]="['/formulaire/edit',addMode,computer.id]">
           <i class="tiny material-icons">edit</i>
         </a>

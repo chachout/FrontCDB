@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   loginForm: FormGroup;
   user: User;
   userConnected: User;
-  constructor(private loginService: ServiceLogin, private router: Router ) { }
+  constructor(public loginService: ServiceLogin, private router: Router ) { }
 
   ngOnInit(): void {
     // tslint:disable-next-line:no-unused-expression
