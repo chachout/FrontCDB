@@ -4,6 +4,7 @@ import {AccueilComponent} from './accueil/accueil.component';
 import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormulaireComponent} from './formulaire/formulaire.component';
+import { ComputerComponent } from './computer/computer.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'formulaire/edit/:addMode/:id',
     component: FormulaireComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'details/:id',
+    component: ComputerComponent,
     pathMatch: 'full'
   },
   {
