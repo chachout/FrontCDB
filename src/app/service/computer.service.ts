@@ -11,10 +11,11 @@ export class ComputerService {
 
   baseURL = 'http://localhost:8080/webModule';
   
+
   constructor(private http: HttpClient) { }
 
-  getComputers(): Observable<Computer[]> {
-    return this.http.get<Computer[]>(this.baseURL+'/computers');
+  getComputers(taillePage:any,pageIterator: any): Observable<Computer[]> {
+    return this.http.get<Computer[]>(this.baseURL+'/computers?taillePage='+taillePage+'&pageIterator='+pageIterator);
   }
   getComputer(id: string): Observable<Computer> {
     return this.http.get<Computer>(this.baseURL+'/computer?id=' + id);
@@ -31,10 +32,13 @@ export class ComputerService {
   getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.baseURL+'/companies');
   }
-  sortBy(field: string): Observable<Computer[]> {
-    return this.http.get<Computer[]>(this.baseURL+'/computers?orderBy='+field);
+  sortBy(field: string,taillePage:any): Observable<Computer[]> {
+    return this.http.get<Computer[]>(this.baseURL+'/computers?orderBy='+field+'&taillePage='+taillePage);
   }
   search(searchBox: string):Observable<Computer[]> {
     return this.http.get<Computer[]>(this.baseURL+'/computers?search='+searchBox);
+  }
+  getNumberOfComputers(): Observable<Number>{
+    return this.http.get<Number>(this.baseURL+'/computers/size');
   }
 }

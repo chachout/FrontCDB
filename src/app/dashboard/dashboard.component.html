@@ -1,6 +1,15 @@
 <div class="row">
-  <div class="col s6">
-    <form action="#">
+  <div class="col s1">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{size}} Ordinateurs trouvés</h4>
+        <input type="number" iclass="form-control" [(ngModel)]="taillePage" name="taillePage">
+        <button type="button" class="btn btn-primary btn-sm" (click)="getComputerLIst(taillePage,pageIterator)">changer la taille</button>
+      </div>
+  </div>
+  </div>
+  <div class="col ">
+
       <div class="file-field input-field">
         <div class="row">
           <div class="input-field col s6">
@@ -9,13 +18,11 @@
           <div class="input-field col s6">
             <button class="btn-floating btn-large waves-effect waves-light red" (click)="search()"><i class="material-icons">search</i></button>      
           </div>
-          {{searchBox}}
        </div>
       </div>
-    </form>
   </div>
-
-  <div class="col s6">
+  
+  <div class="col s1">
     <ul class="right hide-on-med-and-down">
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal"  [routerLink]="['/formulaire/add',!addMode]">
         <i class="material-icons">add</i>
@@ -28,24 +35,24 @@
   <thead>
   <tr>
       <th>  
-        <a (click)="sort('name ASC')" ><i class="small material-icons" >expand_less</i></a>
-        <a (click)="getComputerLIst()" >Computer Name</a>
-        <a  (click)="sort('name DESC')"><i class="small material-icons">expand_more</i></a>
+        <a (click)="sort('name ASC',taillePage)" ><i class="small material-icons" >expand_less</i></a>
+        <a (click)="getComputerLIst(taillePage,pageIterator)" >Computer Name</a>
+        <a  (click)="sort('name DESC',taillePage)"><i class="small material-icons">expand_more</i></a>
       </th>
       <th>
-        <a (click)="sort('introduced ASC')" ><i class="small material-icons">expand_less</i></a>
-        <a (click)="getComputerLIst()" >Introduced Date</a>
-        <a (click)="sort('introduced DESC')" ><i class="small material-icons">expand_more</i></a>
+        <a (click)="sort('introduced ASC',taillePage)" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst(taillePage,pageIterator)" >Introduced Date</a>
+        <a (click)="sort('introduced DESC',taillePage)" ><i class="small material-icons">expand_more</i></a>
       </th>
       <th>
-        <a (click)="sort('discontinued ASC')" ><i class="small material-icons">expand_less</i></a>
-        <a (click)="getComputerLIst()" >Discontinued Date</a>
-        <a (click)="sort('discontinued ASC')" ><i class="small material-icons">expand_more</i></a>
+        <a (click)="sort('discontinued ASC',taillePage)" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst(taillePage,pageIterator)" >Discontinued Date</a>
+        <a (click)="sort('discontinued ASC',taillePage)" ><i class="small material-icons">expand_more</i></a>
       </th>
       <th>
-        <a (click)="sort('company.name ASC')" ><i class="small material-icons">expand_less</i></a>
-        <a (click)="getComputerLIst()" >Company Name</a>
-        <a (click)="sort('company.name DESC')" ><i class="small material-icons">expand_more</i></a>
+        <a (click)="sort('company.name ASC',taillePage)" ><i class="small material-icons">expand_less</i></a>
+        <a (click)="getComputerLIst(taillePage,pageIterator)" >Company Name</a>
+        <a (click)="sort('company.name DESC',taillePage)" ><i class="small material-icons">expand_more</i></a>
       </th>
     </tr>
   </thead>
@@ -61,7 +68,7 @@
           </span>
         <a href=# [routerLink]="['/formulaire/edit',addMode,computer.id]">
           <i class="tiny material-icons">edit</i>
-        </a>
+        </a>estPremierePage
         {{computer.name}}
         </td>
         <td>{{computer.introduced}}</td>
@@ -70,3 +77,15 @@
       </tr>
   </tbody>
 </table>
+<div class="container" *ngIf="searchBox==''">
+  <div class="row centrer">
+    <div class="col s12">
+      <ul class="pagination">
+        <li [ngClass]="{'disabled':estPremierePage(), 'waves-effect':!estPremierePage()}"><a (click)="retournerPage()"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active "><a >{{pageIterator}}</a></li>
+        <li  [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}" *ngFor="let i of cinqsElements()"><a (click)="allerALaPage(pageIterator+i)">{{pageIterator+i}} </a></li>
+        <li [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}"><a (click)="avancerPage()"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
