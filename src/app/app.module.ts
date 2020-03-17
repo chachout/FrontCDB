@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
+import { ComputerComponent } from './computer/computer.component';
 
 
 
@@ -23,7 +24,8 @@ import { BannerComponent } from './banner/banner.component';
     DashboardComponent,
     FormulaireComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
+    ComputerComponent
   ],
   imports: [
     BrowserModule,
