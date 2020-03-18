@@ -1,9 +1,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <nav class="corps monTheme">
   <div class="nav-wrapper ">
-    <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Application - Computer Database</a>
+    <a  class="brand-logo"><img class="responsive-img" src="../../assets/images/excilys.png" alt="logo Excilys">&nbsp; Computer Database</a>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="loginService.estUser()">
+      <li *ngIf="loginService.estUserOrAdmin()">
         <a routerLink="/dashboard">Dashboard</a>
       </li>
       <li>
@@ -13,7 +13,7 @@
       </li>
       <li>
         <div class="text-center" *ngIf="loginService.estConnecte()">
-          <button  class="btn btn-success  mb-4" (click)="loginService.seDeconnecter()">Se deconnecter</button>
+          <button  class="btn btn-success  mb-4" (click)="seDeconnecter()">Se deconnecter</button>
         </div>
       </li>
     </ul>

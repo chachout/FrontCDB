@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ComputerService} from '../service/computer.service';
 import {Computer} from '../model/computer.model';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ServiceLogin } from '../service/login-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent implements OnInit {
   pageIterator:any;
   size:any;
   taillePage:any;
-  constructor(private computerService: ComputerService) { }
+  constructor(private computerService: ComputerService, public loginService: ServiceLogin ) { }
 
   ngOnInit() {
     this.taillePage = 20;

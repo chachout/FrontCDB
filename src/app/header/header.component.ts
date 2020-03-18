@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // tslint:disable-next-line:no-unused-expression
     this.user = new User();
+    this.userConnected = new User;
     this.loginForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl()
@@ -31,6 +32,8 @@ export class HeaderComponent implements OnInit {
     this.seConnecter(this.user);
   }
   seConnecter(user: User) {
+    console.log(user);
+
     // tslint:disable-next-line:no-shadowed-variable
     this.loginService.getUser(user).subscribe(user => {
       this.userConnected = user;
@@ -41,6 +44,10 @@ export class HeaderComponent implements OnInit {
       sessionStorage.setItem( 'role' , this.userConnected.role );
     }, error => console.log(error)) ;
   }
-
+  seDeconnecter() {
+    sessionStorage.clear();
+    this.router.navigate(["dashboard"]);
+    
+  }
 
 }
