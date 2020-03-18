@@ -17,7 +17,7 @@ export class FormulaireComponent implements OnInit {
   computer: Computer;
   computerToEdit: Computer;
   computerForm: FormGroup;
-
+  errors: any;
   constructor(private route: ActivatedRoute, private computerService: ComputerService, private router: Router) {
   }
 
@@ -43,9 +43,17 @@ export class FormulaireComponent implements OnInit {
     this.computer.company.id = this.computerForm.get('companyId').value;
     if (this.addMode === 'true') {
       this.computerService.addComputer(this.computer).subscribe((res) =>{
-        console.log(this.computer);
-        console.log(res);
-         this.router.navigate(['/dashboard'])});
+        this.errors = res;
+          if(this.errors.nameError!=null){
+            this.errors=this.errors.nameError;
+          }
+          else if(this.errors.dateError!=null){
+            this.errors=this.errors.dateError;
+          }
+          else{
+            this.router.navigate(['/dashboard'])}
+          }
+          );
     } else if (this.addMode === 'false') {
       this.computerService.updateComputer(this.computerToEdit).subscribe(() => this.router.navigate(['/dashboard']));
     }
