@@ -30,18 +30,24 @@ export class FormulaireComponent implements OnInit {
       name: new FormControl(),
       introduced: new FormControl(),
       discontinued: new FormControl(),
-      company: new FormControl()
+      companyId: new FormControl()
     });
   }
   addEditComputer() {
+    this.computer= new  Computer();
+    this.computer.company=new Company();
+
     this.computer.name = this.computerForm.get('name').value;
     this.computer.introduced = this.computerForm.get('introduced').value;
     this.computer.discontinued = this.computerForm.get('discontinued').value;
-    this.computer.company = this.computerForm.get('company').value;
+    this.computer.company.id = this.computerForm.get('companyId').value;
     if (this.addMode === 'true') {
-      this.computerService.addComputer(this.computer).subscribe(() => this.router.navigate(['/dashboard']));
+      this.computerService.addComputer(this.computer).subscribe((res) =>{
+        console.log(this.computer);
+        console.log(res);
+         this.router.navigate(['/dashboard'])});
     } else if (this.addMode === 'false') {
-      this.computerService.updateComputer(this.computer).subscribe(() => this.router.navigate(['/dashboard']));
+      this.computerService.updateComputer(this.computerToEdit).subscribe(() => this.router.navigate(['/dashboard']));
     }
   }
 }

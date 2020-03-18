@@ -20,8 +20,8 @@ export class ComputerService {
   getComputer(id: string): Observable<Computer> {
     return this.http.get<Computer>(this.baseURL+'/computer?id=' + id);
   }
-  addComputer(computer: Computer): Observable<string>  {
-    return this.http.post<string>(this.baseURL+'/addComputer', computer);
+  addComputer(computer: Computer): Observable<any>  {
+    return this.http.post<any>(this.baseURL+'/addComputer', computer);
   }
   deleteComputer(idlist: string): Observable<void> {
     console.log(idlist);
