@@ -33,10 +33,10 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let computer of computerList">
+    <tr *ngFor="let computer of computerList ">
         <td class="deleteMode">
-            <a href=#>
-              <i class="small material-icons" (click)="supprimer(computer.id.toString())">delete</i>
+            <a href="/dashboard">
+              <i class="small material-icons" (click)="supprimer(computer)" [routerLink]="['/dashboard']">delete</i>
             </a>
         </td>
         <td>

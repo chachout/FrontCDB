@@ -11,31 +11,31 @@
        <div class="row">
          <div class="input-field col s12">
            <h5>Computer Name</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" type="text" placeholder="{{computerToEdit.name}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a computer name" class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" formControlName="name" type="text" placeholder="{{computerToEdit.name}}" class="validate">
+           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a computer name" formControlName="name" class="validate">
          </div>
        </div>
        <div class="row">
          <div class="input-field col s6">
            <h5>Introduced</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" type="text" placeholder="{{computerToEdit.introduced}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a introduced date" class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" formControlName="introduced" type="text" placeholder="{{computerToEdit.introduced}}" class="validate">
+           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a introduced date" formControlName="introduced" class="validate">
          </div>
          <div class="input-field col s6">
            <h5>Discontinued</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" type="text" placeholder="{{computerToEdit.discontinued}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a discontinued date" class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" formControlName="discontinued" type="text" placeholder="{{computerToEdit.discontinued}}" class="validate">
+           <input *ngIf="addMode=='true'" value="" type="text" placeholder="Enter a discontinued date" formControlName="discontinued" class="validate">
          </div>
        </div>
        <div class="input-field col s12" >
-         <select class="custom-select custom-select-sm">
-           <option selected *ngIf="addMode=='false' && computerToEdit!=null">{{computerToEdit.company.name}}</option>
-           <option value="{{company}}" *ngFor="let company of companyList">{{company.name}} </option>
+         <select formControlName="company" class="custom-select custom-select-sm">
+           <option selected  *ngIf="addMode=='false' && computerToEdit!=null" value="computerToEdit.company.id">{{computerToEdit.company.name}}</option>
+           <option value="company.id" *ngFor="let company of companyList" >{{company.name}} </option>
          </select>
        </div>
+      <button class="btn waves-effect waves-light" type="submit" name="submit">Submit</button>
+      <button class="btn waves-effect waves-light" [routerLink]="['/dashboard']" name="action">Cancel</button>
     </form>
-    <button class="btn waves-effect waves-light" type="submit" name="submit">Submit</button>
-    <button class="btn waves-effect waves-light" [routerLink]="['/dashboard']" name="action">Cancel</button>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter,  Input} from '@angular/core';
 import {ComputerService} from '../service/computer.service';
 import {Computer} from '../model/computer.model';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,12 +11,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
   computerList: Computer[];
   addMode = false;
-  constructor(private computerService: ComputerService) { }
+  constructor(private computerService: ComputerService, private router: Router) { }
 
   ngOnInit() {
     this.computerService.getComputers().subscribe(computerList => this.computerList = computerList, error => console.log(error));
   }
-  supprimer(idList: string) {
-    this.computerService.deleteComputer(idList).subscribe();
+  supprimer(computer: Computer) {
+    const index = this.computerList.indexOf(computer);
+    this.computerList.splice(index, 1);
+    this.computerService.deleteComputer(computer.id.toString()).subscribe(() => this.router.navigate(['/dashboard']));
   }
 }

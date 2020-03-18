@@ -4,6 +4,7 @@ import {Computer} from '../model/computer.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ComputerService} from '../service/computer.service';
 import {Company} from '../model/company.model';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-formulaire',
@@ -14,6 +15,7 @@ export class FormulaireComponent implements OnInit {
   addMode: string;
   idEdit: string;
   companyList: Company[];
+  company: Company;
   computer: Computer;
   computerToEdit: Computer;
   computerForm: FormGroup;
@@ -34,10 +36,13 @@ export class FormulaireComponent implements OnInit {
     });
   }
   addEditComputer() {
+    this.computer = new Computer();
+    this.computer.id = Number (this.idEdit);
     this.computer.name = this.computerForm.get('name').value;
     this.computer.introduced = this.computerForm.get('introduced').value;
     this.computer.discontinued = this.computerForm.get('discontinued').value;
-    this.computer.company = this.computerForm.get('company').value;
+    this.computer.company = new Company();
+    this.computer.company.id = this.computerForm.get('company').value;
     if (this.addMode === 'true') {
       this.computerService.addComputer(this.computer).subscribe(() => this.router.navigate(['/dashboard']));
     } else if (this.addMode === 'false') {
