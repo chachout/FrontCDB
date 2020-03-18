@@ -1,6 +1,14 @@
 .centrerLargeur{
   margin: auto;
+  margin-top:0px;
   height:430px;
   width: 50%;
+}
+
+.centrer{
+  padding-top:0px !important; 
+  margin: auto;
+  margin-top:5px;
+  width: 100%;
   padding:100px;
 }
