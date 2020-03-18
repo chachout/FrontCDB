@@ -15,31 +15,32 @@
        <div class="row">
          <div class="input-field col s12">
            <h5>Computer Name</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null" type="text" value="{{computerToEdit.name}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="text"  class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null" type="text" [(ngModel)]="computerToEdit.name" class="validate"  formControlName="name" name="name">
+           <input *ngIf="addMode=='true'" value="" type="text"  class="validate" formControlName="name" name="name">
          </div>
        </div>
        <div class="row">
          <div class="input-field col s6">
            <h5>Introduced</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null"  type="text" value="{{computerToEdit.introduced}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="date" placeholder="introduced date" class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null"  type="date" [(ngModel)]="computerToEdit.introduced" class="validate"  formControlName="introduced" name="introduced">
+           <input *ngIf="addMode=='true'" value="" type="date" placeholder="introduced date" class="validate"  formControlName="introduced" name="introduced">
          </div>
          <div class="input-field col s6">
            <h5>Discontinued</h5>
-           <input *ngIf="addMode=='false' && computerToEdit!=null" value="" type="text" placeholder="{{computerToEdit.discontinued}}" class="validate">
-           <input *ngIf="addMode=='true'" value="" type="date" placeholder="discontinued date" class="validate">
+           <input *ngIf="addMode=='false' && computerToEdit!=null"  type="date" [(ngModel)]="computerToEdit.discontinued" class="validate"  formControlName="discontinued" name="discontinued">
+           <input *ngIf="addMode=='true'" value="" type="date" placeholder="discontinued date" class="validate"  formControlName="discontinued" name="discontinued">
          </div>
        </div>
        <div class="input-field col s12" >
-         <select class="custom-select custom-select-sm">
-           <option selected *ngIf="addMode=='false' && computerToEdit!=null">{{computerToEdit.company.name}}</option>
-           <option value="{{company}}" *ngFor="let company of companyList">{{company.name}} </option>
+         <select class="custom-select custom-select-sm"  formControlName="companyId" name="companyId">
+           <option selected *ngIf="addMode=='false' && computerToEdit!=null && computerToEdit.company!=null">{{computerToEdit.company.name}}</option>
+           <option value="company.id" *ngFor="let company of companyList">{{company.name}} </option>
          </select>
        </div>
+       <button class="btn waves-effect waves-light" type="submit" >Submit</button>
+    <button class="btn waves-effect waves-light" type="reset" [routerLink]="['/dashboard']" name="action">Cancel</button>
     </form>
-    <button class="btn waves-effect waves-light" type="submit" name="submit">Submit</button>
-    <button class="btn waves-effect waves-light" [routerLink]="['/dashboard']" name="action">Cancel</button>
+  
   </div>
 </div>
 <br>
