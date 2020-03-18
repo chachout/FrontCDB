@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Computer } from '../model/computer.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComputerService } from '../service/computer.service';
+import { ServiceLogin } from '../service/login-service';
 
 @Component({
   selector: 'app-computer',
@@ -12,7 +13,8 @@ export class ComputerComponent implements OnInit {
 
   computer: Computer;
   id:any;
-  constructor(private route: ActivatedRoute, private computerService: ComputerService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private computerService: ComputerService, private router: Router,
+    public loginService: ServiceLogin) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');

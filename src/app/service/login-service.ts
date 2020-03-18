@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/User.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -8,22 +8,24 @@ import {Observable, of} from 'rxjs';
 })
 export class ServiceLogin {
 
-  baseUrl = 'localhost:8080/webModule/';
-  UserConnected: User ;
+  
+
+  baseUrl = 'http://localhost:8080/webModule';
+  
   constructor(private http: HttpClient) { }
 
   getUser(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl + 'login', user);
+    return this.http.post<User>(this.baseUrl + '/login',user);
   }
 
-  estUser(): boolean {
+  estUserOrAdmin(): boolean {
 
     // tslint:disable-next-line:triple-equals
-    if ( sessionStorage.getItem('role') == 'ROLE_USER') {
+    if ( sessionStorage.getItem('role') == 'ROLE_USER' || sessionStorage.getItem('role') == 'ROLE_ADMIN') {
       return true;
-    } else {
+    } 
       return false;
-    }
+  
   }
   estAdmin(): boolean {
 
@@ -42,9 +44,10 @@ export class ServiceLogin {
       return false;
     }
   }
-
   seDeconnecter() {
     sessionStorage.clear();
+    
   }
+
 
 }
