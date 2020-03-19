@@ -12,7 +12,7 @@ import { ServiceLogin } from '../service/login-service';
 export class DashboardComponent implements OnInit {
   computerList: Computer[];
   addMode = false;
-  searchBox: any ;
+  searchBox: string ;
   pageIterator:any;
   size:any;
   taillePage:any;
@@ -49,8 +49,11 @@ export class DashboardComponent implements OnInit {
 
   search(){
     this.pageIterator=0;
-    this.computerService.search(this.searchBox).subscribe(computerList => this.computerList = computerList, error => console.log(error));
-    this.size=this.computerList .length;
+    if(this.searchBox.trim()!=""){
+      this.computerService.search(this.searchBox).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+      this.size=this.computerList .length;
+    }
+   
   }
 
   estDernierePage():boolean{
