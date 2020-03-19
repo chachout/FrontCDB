@@ -10,22 +10,22 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s3">
+            <div class="input-field col s1">
               <input type="number" iclass="form-control" required  [(ngModel)]="taillePage" name="taillePage">
               
             </div>
             
             <div class="input-field col s3">
-              <button type="button" style="color:white" class="btn  btn-sm btn-success" (click)="getComputerLIst(taillePage,pageIterator)">Ordinateur par page</button>
+              <button type="button" style="color:white" class="btn  btn-sm btn-success" (click)="getComputerLIst()">Ordinateur par page</button>
             </div>
             <div class="input-field col s3">
-              <input placeholder="search" id="search" type="text" class="validate" [(ngModel)]="searchBox" name="recherche" required #recherche="ngModel">
-              <span *ngIf="recherche.errors.required">
-                Veuillez entrer un texte à chercher
-              </span>
+              <input placeholder="search" id="search" type="text" class="validate" [(ngModel)]="searchBox" name="searchBox" required >
             </div>
             <div class="input-field col s3">
               <button class="btn-floating btn-large waves-effect waves-light btn-success" (click)="search()"><i class="material-icons">search</i></button>      
+            </div>
+            <div class="input-field col s2">
+              <button type="button" style="color:white" class="btn  btn-sm btn-success" (click)="getComputerLIst()">Afficher tout</button>
             </div>
           </div>
           <div  class="row" style="text-align: center;" *ngIf="loginService.estAdmin()"> 
@@ -50,24 +50,24 @@
             
           </th>
           <th>  
-            <a (click)="sort('name ASC',taillePage)"><i class="small material-icons reactif" >expand_less</i></a>
-            <a (click)="getComputerLIst(taillePage,pageIterator)"> <span class="reactif"> Name</span></a>
-            <a  (click)="sort('name DESC',taillePage)"><i class="small material-icons reactif">expand_more</i></a>
+            <a (click)="sort('name ASC')"><i class="small material-icons reactif" >expand_less</i></a>
+            <a (click)="normalSort()"> <span class="reactif"> Name</span></a>
+            <a  (click)="sort('name DESC')"><i class="small material-icons reactif">expand_more</i></a>
           </th>
           <th>
-            <a (click)="sort('introduced ASC',taillePage)" ><i class="small material-icons reactif">expand_less</i></a>
-            <a (click)="getComputerLIst(taillePage,pageIterator)" ><span class="reactif">Introduced Date</span></a>
-            <a (click)="sort('introduced DESC',taillePage)" ><i class="small material-icons reactif">expand_more</i></a>
+            <a (click)="sort('introduced ASC')" ><i class="small material-icons reactif">expand_less</i></a>
+            <a (click)="normalSort()" ><span class="reactif">Introduced Date</span></a>
+            <a (click)="sort('introduced DESC')" ><i class="small material-icons reactif">expand_more</i></a>
           </th>
           <th>
-            <a (click)="sort('discontinued ASC',taillePage)" ><i class="small material-icons reactif">expand_less</i></a>
-            <a (click)="getComputerLIst(taillePage,pageIterator)" ><span class="reactif">Discontinued Date</span></a>
-            <a (click)="sort('discontinued ASC',taillePage)" ><i class="small material-icons reactif">expand_more</i></a>
+            <a (click)="sort('discontinued ASC')" ><i class="small material-icons reactif">expand_less</i></a>
+            <a (click)="normalSort()" ><span class="reactif">Discontinued Date</span></a>
+            <a (click)="sort('discontinued ASC')" ><i class="small material-icons reactif">expand_more</i></a>
           </th>
           <th>
-            <a (click)="sort('company.name ASC',taillePage)" ><i class="small material-icons reactif">expand_less</i></a>
-            <a (click)="getComputerLIst(taillePage,pageIterator)"><span class="reactif">Company Name</span></a>
-            <a (click)="sort('company.name DESC',taillePage)" ><i class="small material-icons reactif">expand_more</i></a>
+            <a (click)="sort('company.name ASC')" ><i class="small material-icons reactif">expand_less</i></a>
+            <a (click)="normalSort()"><span class="reactif">Company Name</span></a>
+            <a (click)="sort('company.name DESC')" ><i class="small material-icons reactif">expand_more</i></a>
           </th>
           <th></th>
         </tr>
@@ -103,7 +103,7 @@
     </table>
   </div>
   <div class="row">
-    <div class="container" *ngIf="searchBox==''">
+    <div class="container">
       <div class="row centrer">
         <div class="col s12">
           <ul class="pagination">
