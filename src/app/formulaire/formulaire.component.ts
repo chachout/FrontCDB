@@ -4,6 +4,7 @@ import {Computer} from '../model/computer.model';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ComputerService} from '../service/computer.service';
 import {Company} from '../model/company.model';
+import { ServiceLogin } from '../service/login-service';
 
 @Component({
   selector: 'app-formulaire',
@@ -18,7 +19,8 @@ export class FormulaireComponent implements OnInit {
   computerToEdit: Computer;
   computerForm: FormGroup;
   errors: any;
-  constructor(private route: ActivatedRoute, private computerService: ComputerService, private router: Router) {
+  constructor(private route: ActivatedRoute, private computerService: ComputerService, private router: Router,
+    public loginService: ServiceLogin) {
   }
 
   ngOnInit(): void {
@@ -55,7 +57,12 @@ export class FormulaireComponent implements OnInit {
           }
           );
     } else if (this.addMode === 'false') {
-      this.computerService.updateComputer(this.computerToEdit).subscribe(() => this.router.navigate(['/dashboard']));
+      this.computerToEdit.company={'id':this.computerForm.get('companyId').value, 'name':''};
+      console.log(this.computerToEdit);
+      this.computerService.updateComputer(this.computerToEdit).subscribe((error) => {
+      this.router.navigate(['/dashboard'])
+      }
+      );
     }
   }
 }

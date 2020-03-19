@@ -8,6 +8,7 @@ import {Observable, of} from 'rxjs';
   providedIn: 'root'
 })
 export class ComputerService {
+  
 
   baseURL = 'http://localhost:8080/webModule';
   
@@ -33,13 +34,19 @@ export class ComputerService {
   getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>(this.baseURL+'/companies');
   }
-  sortBy(field: string,taillePage:any): Observable<Computer[]> {
-    return this.http.get<Computer[]>(this.baseURL+'/computers?orderBy='+field+'&taillePage='+taillePage);
+  sortBy(taillePage:any,pageIterator: any,field: string): Observable<Computer[]> {
+    return this.http.get<Computer[]>(this.baseURL+'/computers?taillePage='+taillePage+'&pageIterator='+pageIterator+'&orderBy='+field);
   }
-  search(searchBox: string):Observable<Computer[]> {
-    return this.http.get<Computer[]>(this.baseURL+'/computers?search='+searchBox);
+  sortSearchBy(taillePage:any,pageIterator: any,searchBox: string,field: string) {
+    return this.http.get<Computer[]>(this.baseURL+'/computers?search='+searchBox+'&taillePage='+taillePage+'&pageIterator='+pageIterator+'&orderBy='+field);
+  }
+  search(taillePage:any,pageIterator: any,searchBox: string):Observable<Computer[]> {
+    return this.http.get<Computer[]>(this.baseURL+'/computers?search='+searchBox+'&taillePage='+taillePage+'&pageIterator='+pageIterator);
   }
   getNumberOfComputers(): Observable<Number>{
     return this.http.get<Number>(this.baseURL+'/computers/size');
+  }
+  sizeSearch(search:any): Observable<Number>{
+    return this.http.get<Number>(this.baseURL+'/computers/sizeSearch?search='+search);
   }
 }
