@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.taillePage = 20;
-    this.pageIterator = 0;
+    this.pageIterator = 1;
     this.getComputerLIst(this.taillePage,this.pageIterator);
     this.searchBox = '';
     this.size=0;
@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getComputerLIst(taillePage:any,pageIterator:any){
-    this.computerService.getComputers(taillePage,pageIterator).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+    this.computerService.getComputers(taillePage,pageIterator-1).subscribe(computerList => this.computerList = computerList, error => console.log(error));
     this.numberOfComputers();
   }
 
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     }
   }
   estPremierePage():boolean{
-    if(this.pageIterator==0){
+    if(this.pageIterator==1){
       return true;
     }
     return false;
@@ -72,13 +72,13 @@ export class DashboardComponent implements OnInit {
     return list;
   }
   numberOfComputers(){
-    this.computerService.getNumberOfComputers().subscribe(size => this.size = size, error => console.log() ) 
+    this.computerService.getNumberOfComputers().subscribe(size => this.size = size, error => console.log() )
   }
 
   avancerPage(){
     this.pageIterator++;
     this.getComputerLIst(this.taillePage,this.pageIterator);
-    
+
   }
   allerALaPage(i:any){
     this.pageIterator=i;

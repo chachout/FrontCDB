@@ -4,7 +4,7 @@
     <div class="col s6" >
       <div class="card">
         <div class="card-body">
-          <div  class="row" style="text-align: center;"> 
+          <div  class="row" style="text-align: center;">
             <div class="col s12 " >
               <h2 class="card-title">{{size}} Ordinateurs trouvés</h2>
             </div>
@@ -20,10 +20,10 @@
               <input placeholder="search" id="search" type="text" class="validate" [(ngModel)]="searchBox" name="searchBox">
             </div>
             <div class="input-field col s3">
-              <button class="btn-floating btn-large waves-effect waves-light btn-success" (click)="search()"><i class="material-icons">search</i></button>      
+              <button class="btn-floating btn-large waves-effect waves-light btn-success" (click)="search()"><i class="material-icons">search</i></button>
             </div>
           </div>
-          <div  class="row" style="text-align: center;" *ngIf="loginService.estAdmin()"> 
+          <div  class="row" style="text-align: center;" *ngIf="loginService.estAdmin()">
             <div class="col s12 " >
                   <a class="btn-floating btn-large waves-effect waves-light btn-success" [routerLink]="['/formulaire/add',!addMode]"><i class="material-icons">add</i></a>
             </div>
@@ -31,24 +31,20 @@
         </div>
       </div>
     </div>
-    
+
   </div>
-  
+
   <div class="row">
     <table class="striped">
       <thead>
       <tr>
           <th *ngIf="loginService.estAdmin()">
-            <a href="#" >
-              <i class="small material-icons " style="font-size: 30px; color:red">delete</i>
-            </a>
+            <h5>Delete</h5>
           </th>
           <th  *ngIf="loginService.estAdmin()">
-            <a href="#">
-              <i class="small material-icons" style="font-size: 30px;color: #0aa61a;">edit</i>
-            </a>
+            <h5>Edit</h5>
           </th>
-          <th>  
+          <th>
             <a (click)="sort('name ASC',taillePage)" ><i class="small material-icons" >expand_less</i></a>
             <a (click)="getComputerLIst(taillePage,pageIterator)" >Computer Name</a>
             <a  (click)="sort('name DESC',taillePage)"><i class="small material-icons">expand_more</i></a>
@@ -71,10 +67,10 @@
           <th></th>
         </tr>
       </thead>
-  
+
       <tbody>
         <tr *ngFor="let computer of computerList">
-            
+
             <td  *ngIf="loginService.estAdmin()">
               <span class="deleteMode">
                 <a>
@@ -143,7 +139,7 @@
 
       <!-- Excerpt -->
       <a href="#!" style="color:red">
-        <h1 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i>403 Access Denied</h1>  
+        <h1 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i>403 Access Denied</h1>
       </a>
 
       <p class="font-weight-normal">
@@ -159,4 +155,4 @@
 
 </div>
 </div>
-<app-footer></app-footer>
+
