@@ -12,11 +12,11 @@
           <div class="row">
             <div class="input-field col s1">
               <input type="number" iclass="form-control" required  [(ngModel)]="taillePage" name="taillePage">
-              
+
             </div>
-            
+
             <div class="input-field col s3">
-              <button type="button" style="color:white" class="btn  btn-sm btn-success" (click)="getComputerLIst()">Ordinateur par page</button>
+              <button type="button" style="color:white" class="btn  btn-sm btn-success" (click)="getComputerLIst()">Ordinateurs par page</button>
             </div>
             <div class="input-field col s3">
               <input placeholder="search" id="search" type="text" class="validate" [(ngModel)]="searchBox" name="searchBox" required >
@@ -46,9 +46,9 @@
           <th *ngIf="loginService.estAdmin()">
           </th>
           <th  *ngIf="loginService.estAdmin()">
-            
+
           </th>
-          <th>  
+          <th>
             <a (click)="sort('name ASC')"><i class="small material-icons reactif" >expand_less</i></a>
             <a (click)="normalSort()"> <span class="reactif"> Name</span></a>
             <a  (click)="sort('name DESC')"><i class="small material-icons reactif">expand_more</i></a>

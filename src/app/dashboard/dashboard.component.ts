@@ -34,19 +34,19 @@ export class DashboardComponent implements OnInit {
   getComputerLIst(){
     this.initialiserIterationPourListe();
     if(this.orderBy==""){
-      this.computerService.getComputers(this.taillePage,this.pageIterator).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+      this.computerService.getComputers(this.taillePage,this.pageIterator-1).subscribe(computerList => this.computerList = computerList, error => console.log(error));
     }
     else{
       this.sort(this.orderBy);
     }
     this.numberOfComputers();
-    this.afficherTouteLaListe(); 
+    this.afficherTouteLaListe();
   }
   afficherTouteLaListe(){
     this.searchMode=false;
     this.searchBox="";
   }
-  
+
   supprimer(idList: string) {
     if(confirm("voulez-vous vraiment supprimer cet ordinateur?")) {
       this.computerService.deleteComputer(idList).subscribe(()=>
@@ -67,13 +67,13 @@ export class DashboardComponent implements OnInit {
   sort(field:string){
     this.orderBy=field
     if(this.searchMode==false){
-      this.computerService.sortBy(this.taillePage,this.pageIterator,field).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+      this.computerService.sortBy(this.taillePage,this.pageIterator-1,field).subscribe(computerList => this.computerList = computerList, error => console.log(error));
       this.numberOfComputers();
     }
     else{
-      this.computerService.sortSearchBy(this.taillePage,this.pageIterator,this.searchBox,field).subscribe(computerList => this.computerList = computerList, error => console.log(error));
+      this.computerService.sortSearchBy(this.taillePage,this.pageIterator-1,this.searchBox,field).subscribe(computerList => this.computerList = computerList, error => console.log(error));
     }
-  
+
   }
   initialiserIterationPourSearch(){
   if(this.searchMode==false){
@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
      this.computerService.sizeSearch(this.searchBox).subscribe((size)=>this.size=size);
       this.searchMode = true;
     }
-   
+
   }
 
   estDernierePage():boolean{
@@ -127,10 +127,10 @@ export class DashboardComponent implements OnInit {
     if(this.searchMode ==false){
       this.getComputerLIst();
 
-    } 
+    }
     else{
       this.search();
-    }   
+    }
 
   }
   allerALaPage(i:any){
@@ -138,10 +138,10 @@ export class DashboardComponent implements OnInit {
     if(this.searchMode ==false){
       this.getComputerLIst();
 
-    } 
+    }
     else{
       this.search();
-    }   
+    }
 
   }
   retournerPage(){
@@ -149,9 +149,9 @@ export class DashboardComponent implements OnInit {
    if(this.searchMode ==false){
       this.getComputerLIst();
 
-    } 
+    }
     else{
       this.search();
-    } 
+    }
   }
 }
