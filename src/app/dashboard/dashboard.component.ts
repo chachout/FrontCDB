@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
     this.orderBy="";
   }
 
+
   getComputerLIst(){
     this.initialiserIterationPourListe();
     if(this.orderBy==""){
@@ -107,7 +108,7 @@ export class DashboardComponent implements OnInit {
     }
   }
   estPremierePage():boolean{
-    if(this.pageIterator==0){
+    if(this.pageIterator==1){
       return true;
     }
     return false;
@@ -118,7 +119,7 @@ export class DashboardComponent implements OnInit {
     return list;
   }
   numberOfComputers(){
-    this.computerService.getNumberOfComputers().subscribe(size => this.size = size, error => console.log() ) 
+    this.computerService.getNumberOfComputers().subscribe(size => this.size = size, error => console.log() )
   }
 
   avancerPage(){
@@ -130,6 +131,7 @@ export class DashboardComponent implements OnInit {
     else{
       this.search();
     }   
+
   }
   allerALaPage(i:any){
     this.pageIterator=i;
