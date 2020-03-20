@@ -23,6 +23,7 @@ export class FormulaireComponent implements OnInit {
     public loginService: ServiceLogin) {
   }
 
+  
   ngOnInit(): void {
     this.addMode = this.route.snapshot.paramMap.get('addMode');
     this.idEdit = this.route.snapshot.paramMap.get('id');

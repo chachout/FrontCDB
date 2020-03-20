@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FormulaireComponent} from './formulaire/formulaire.component';
 import { ComputerComponent } from './computer/computer.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: ComputerComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
     pathMatch: 'full'
   },
   {

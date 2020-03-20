@@ -99,7 +99,14 @@ export class DashboardComponent implements OnInit {
     }
 
   }
-
+ dernierePage():number{
+   if(Number.isInteger(this.size/this.taillePage)){
+     return this.size/this.taillePage;
+   }
+   else{
+   return Math.trunc(this.size/this.taillePage)+1;
+   }
+ }
   estDernierePage():boolean{
     if((this.pageIterator == this.size/this.taillePage) || (this.pageIterator+1 > this.size/this.taillePage) ){
       return true;
