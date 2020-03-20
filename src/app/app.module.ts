@@ -13,6 +13,7 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
 import { ComputerComponent } from './computer/computer.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -25,7 +26,8 @@ import { ComputerComponent } from './computer/computer.component';
     FormulaireComponent,
     FooterComponent,
     BannerComponent,
-    ComputerComponent
+    ComputerComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

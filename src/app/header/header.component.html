@@ -2,9 +2,12 @@
 <nav class="corps monTheme">
   <div class="nav-wrapper ">
     <a  class="brand-logo"><img class="responsive-img" src="../../assets/images/excilys.png" alt="logo Excilys">&nbsp; Computer Database</a>
-    <ul class="right hide-on-med-and-down">
+    <ul class="right hide-on-med-and-down" style="color:white;">
       <li *ngIf="loginService.estUserOrAdmin()">
-        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/dashboard"><strong>Dashboard</strong></a>
+      </li>
+      <li >
+        <a routerLink="/contact"><strong>Contactez-nous</strong></a>
       </li>
       <li>
         <div class="text-center" *ngIf="!loginService.estConnecte()">

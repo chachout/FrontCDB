@@ -109,8 +109,25 @@
             <li [ngClass]="{'disabled':estPremierePage(), 'waves-effect':!estPremierePage()}"><a (click)="retournerPage()"><i class="material-icons">chevron_left</i></a></li>
             <li class="monTheme "><a >{{pageIterator}}</a></li>
             <li  [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}" *ngFor="let i of cinqsElements()"><a (click)="allerALaPage(pageIterator+i)">{{pageIterator+i}} </a></li>
-            <li [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}"><a (click)="avancerPage()"><i class="material-icons">chevron_right</i></a></li>
+            <li [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}">
+              <a (click)="avancerPage()"><i class="material-icons">chevron_right</i></a>&nbsp;
+              
+            </li>
           </ul>
+          <div>
+          <span [ngClass]="{'disabled':estDernierePage(), 'waves-effect':!estDernierePage()}">
+            
+            <a (click)="allerALaPage(dernierePage())" class="btn btn-success"> 
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Aller à la dernière Page
+            </a>
+          </span>
+          <span [ngClass]="{'disabled':estPremierePage(), 'waves-effect':!estPremierePage()}">
+            
+            <a (click)="allerALaPage(1)" class="btn btn-success"> 
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Aller à la première Page
+            </a>
+          </span>
+          </div>
         </div>
       </div>
     </div>

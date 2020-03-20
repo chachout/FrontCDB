@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   }
   seDeconnecter() {
     sessionStorage.clear();
-    this.router.navigate(["dashboard"]);
+    this.router.navigate(['/accueil']);
     
   }
 
